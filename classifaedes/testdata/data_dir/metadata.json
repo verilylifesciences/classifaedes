@@ -1,0 +1,12 @@
+{
+  "num_examples_train": 21, 
+  "min_width": 336, 
+  "input_dir": "REDACTED", 
+  "max_height": 346, 
+  "num_examples_test": 29, 
+  "max_width": 672, 
+  "min_height": 254, 
+  "timestamp": "20170225_122611", 
+  "raw_command": "REDACTED",
+  "output_dir": "/tmp/deet_singulator/testdata/data/"
+}
