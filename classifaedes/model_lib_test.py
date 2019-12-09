@@ -22,6 +22,7 @@ from absl.testing import parameterized
 from classifaedes import hparams_lib
 from classifaedes import model_lib
 import tensorflow as tf
+from tensorflow.contrib import learn as contrib_learn
 
 
 @parameterized.named_parameters(
@@ -50,8 +51,8 @@ class ModelLibTest(tf.test.TestCase):
       inputs, targets = self._input_fn(batch_size)
       model_fn = model_lib.build_model_fn(hps, self._input_md)
 
-      probabilities, loss, train_op = model_fn(
-          inputs, targets, tf.contrib.learn.ModeKeys.TRAIN)
+      probabilities, loss, train_op = model_fn(inputs, targets,
+                                               contrib_learn.ModeKeys.TRAIN)
 
     self.assertEqual(probabilities['outputs'].dtype, tf.float32)
     self.assertEqual(loss.dtype, tf.float32)
@@ -66,8 +67,8 @@ class ModelLibTest(tf.test.TestCase):
       inputs, targets = self._input_fn(batch_size)
       model_fn = model_lib.build_model_fn(hps, self._input_md)
 
-      probabilities, loss, train_op = model_fn(
-          inputs, targets, tf.contrib.learn.ModeKeys.EVAL)
+      probabilities, loss, train_op = model_fn(inputs, targets,
+                                               contrib_learn.ModeKeys.EVAL)
 
     self.assertEqual(probabilities['outputs'].dtype, tf.float32)
     self.assertEqual(loss.dtype, tf.float32)
@@ -82,7 +83,7 @@ class ModelLibTest(tf.test.TestCase):
       model_fn = model_lib.build_model_fn(hps, self._input_md)
 
       probabilities_tensor, loss_tensor, train_op = model_fn(
-          inputs, targets, tf.contrib.learn.ModeKeys.TRAIN)
+          inputs, targets, contrib_learn.ModeKeys.TRAIN)
 
       tf.global_variables_initializer().run()
       sess.run(train_op)
@@ -94,7 +95,7 @@ class ModelLibTest(tf.test.TestCase):
       model_fn = model_lib.build_model_fn(hps, self._input_md)
 
       probabilities_tensor, loss_tensor, _ = model_fn(
-          inputs, targets, tf.contrib.learn.ModeKeys.EVAL)
+          inputs, targets, contrib_learn.ModeKeys.EVAL)
 
       tf.global_variables_initializer().run()
       sess.run([probabilities_tensor, loss_tensor])

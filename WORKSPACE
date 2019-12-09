@@ -17,16 +17,16 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 git_repository(
     name = "rules_python",
     remote = "https://github.com/bazelbuild/rules_python.git",
-    commit = "9d68f24659e8ce8b736590ba1e4418af06ec2552",
+    commit = "94677401bc56ed5d756f50b441a6a5c7f735a6d4",
 )
 
 load("@rules_python//python:repositories.bzl", "py_repositories")
 py_repositories()
 
-load("@rules_python//python:pip.bzl", "pip_repositories", "pip_import")
+load("@rules_python//python:pip.bzl", "pip_repositories", "pip3_import")
 pip_repositories()
 
-pip_import(name = "pipdeps", requirements = "//classifaedes:requirements.txt")
+pip3_import(name = "pipdeps", requirements = "//classifaedes:requirements.txt")
 
 load("@pipdeps//:requirements.bzl", "pip_install",)
 pip_install()

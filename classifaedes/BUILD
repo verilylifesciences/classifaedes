@@ -70,6 +70,12 @@ py_library(
     deps = [
         ":metadata",
         requirement("tensorflow"),
+        # contrib/framework:framework_py
+        # contrib/learn
+        # contrib/metrics:metrics_py
+        # contrib/slim
+        # contrib/slim/python/slim/nets:inception
+        # contrib/training:training_py
         
     ],
 )
@@ -125,6 +131,7 @@ py_test(
         ":learner_main_lib",
         requirement("absl-py"), # parameterized
         requirement("tensorflow"),
+        # contrib/learn
     ],
 )
 
@@ -145,5 +152,6 @@ py_library(
         ":simple_image_lib",
         requirement("numpy"),
         requirement("tensorflow"),
+        # contrib/learn
     ],
 )

@@ -23,6 +23,7 @@ import time
 
 
 import tensorflow as tf
+from tensorflow.contrib import training as contrib_training
 
 flags = tf.app.flags
 FLAGS = flags.FLAGS
@@ -30,7 +31,7 @@ FLAGS = flags.FLAGS
 
 def defaults():
   """Returns default HParams instance."""
-  hps = tf.contrib.training.HParams(
+  hps = contrib_training.HParams(
       batch_size=16,
 
       # Learning rate params.

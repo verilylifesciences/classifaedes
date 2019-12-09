@@ -24,8 +24,7 @@ import random
 
 from classifaedes import metadata
 import tensorflow as tf
-
-slim = tf.contrib.slim
+from tensorflow.contrib import slim
 
 flags = tf.app.flags
 FLAGS = flags.FLAGS

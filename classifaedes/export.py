@@ -25,6 +25,7 @@ from classifaedes import model_lib
 import classifaedes.simple_image_lib as sil
 import numpy as np
 import tensorflow as tf
+from tensorflow.contrib import learn as contrib_learn
 
 flags = tf.app.flags
 FLAGS = flags.FLAGS
@@ -55,7 +56,7 @@ def make_input_fn(image_shape):
         'encoded_pngs': pngs,
         'images': imgs,   # For model_fn.
     }
-    return tf.contrib.learn.utils.input_fn_utils.InputFnOps(
+    return contrib_learn.utils.input_fn_utils.InputFnOps(
         inputs, None, {'inputs': pngs})
   return input_fn
 
@@ -79,7 +80,7 @@ def run_test_inference(image_shape, export_dir):
 
 def run_export(hps, image_shape, model_dir, export_dir_base):
   """Export model checkpoint under `model_dir` to `export_dir_base`."""
-  estimator = tf.contrib.learn.Estimator(
+  estimator = contrib_learn.Estimator(
       model_fn=model_lib.build_model_fn(hps, {}),
       model_dir=model_dir,
   )

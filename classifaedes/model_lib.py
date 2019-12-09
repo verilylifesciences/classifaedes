@@ -22,14 +22,16 @@ import functools as ft
 from classifaedes import metadata
 import numpy as np
 import tensorflow as tf
+from tensorflow.contrib import framework as contrib_framework
+from tensorflow.contrib import learn as contrib_learn
+from tensorflow.contrib import metrics as contrib_metrics
+from tensorflow.contrib import slim
 
 # Schenanegans to import extra tensforflow dependencies that are not
 # pulled in by default in Google's system.
-import tensorflow.contrib.learn as tflearn
 from tensorflow.contrib.slim.nets import inception
 
-tfmetrics = tf.contrib.metrics
-slim = tf.contrib.slim
+tfmetrics = contrib_metrics
 
 
 def build_model_fn(hps, input_md):
@@ -55,12 +57,12 @@ def build_model_fn(hps, input_md):
       train_op: Op/Tensor that triggers gradient updates (None when mode=EVAL).
     """
     imgs = inputs['images']
-    is_training = mode == tf.contrib.learn.ModeKeys.TRAIN
+    is_training = mode == contrib_learn.ModeKeys.TRAIN
 
     logits = _build_inference_net(hps, imgs, is_training)
 
     loss = None
-    if mode != tf.contrib.learn.ModeKeys.INFER:
+    if mode != contrib_learn.ModeKeys.INFER:
       if hps.use_global_objective_recall_at_precision:
         raise NotImplementedError(
             'Global Objective Optimization is not Available')
@@ -97,7 +99,7 @@ def build_model_fn(hps, input_md):
 def build_eval_metrics():
   """Builds dictionary of MetricSpecs for tf.learn's Estimator."""
   metrics = {
-      'eval/auc': tflearn.MetricSpec(tfmetrics.streaming_auc),
+      'eval/auc': contrib_learn.MetricSpec(tfmetrics.streaming_auc),
   }
 
   for k in range(1, 4):
@@ -105,9 +107,9 @@ def build_eval_metrics():
                               specificity=(1.- 0.1**k))
     spec_at_sens = ft.partial(tfmetrics.streaming_specificity_at_sensitivity,
                               sensitivity=(1.- 0.1**k))
-    metrics['eval/sens@spec/%d_9s' % k] = tflearn.MetricSpec(
+    metrics['eval/sens@spec/%d_9s' % k] = contrib_learn.MetricSpec(
         sens_at_spec)
-    metrics['eval/spec@sens/%d_9s' % k] = tflearn.MetricSpec(
+    metrics['eval/spec@sens/%d_9s' % k] = contrib_learn.MetricSpec(
         spec_at_sens)
 
   for k in range(1, 4):
@@ -115,9 +117,9 @@ def build_eval_metrics():
                               specificity=(1.- 0.5**k))
     spec_at_sens = ft.partial(tfmetrics.streaming_specificity_at_sensitivity,
                               sensitivity=(1.- 0.5**k))
-    metrics['eval/sens@spec/%d_1s' % k] = tflearn.MetricSpec(
+    metrics['eval/sens@spec/%d_1s' % k] = contrib_learn.MetricSpec(
         sens_at_spec)
-    metrics['eval/spec@sens/%d_1s' % k] = tflearn.MetricSpec(
+    metrics['eval/spec@sens/%d_1s' % k] = contrib_learn.MetricSpec(
         spec_at_sens)
 
   return metrics
@@ -135,7 +137,7 @@ def _add_saver():
 def _build_train_op(hps, loss):
   learning_rate = tf.train.exponential_decay(
       hps.lr_init,
-      tf.contrib.framework.get_or_create_global_step(),
+      contrib_framework.get_or_create_global_step(),
       decay_steps=hps.lr_decay_steps,
       decay_rate=0.95)
   tf.summary.scalar('learning_rate', learning_rate)

@@ -28,6 +28,7 @@ from classifaedes import inputs_lib
 from classifaedes import metadata
 from classifaedes import model_lib
 import tensorflow as tf
+from tensorflow.contrib import learn as contrib_learn
 
 # Schenanegans to import extra tensforflow dependencies that are not
 # pulled in by default in Google's system.
@@ -84,7 +85,7 @@ def build_experiment_fn(hps, input_md):
   def experiment_fn(output_dir):
     """Returns tf.learn Experiment for the model."""
 
-    estimator = tf.contrib.learn.Estimator(
+    estimator = contrib_learn.Estimator(
         model_fn=model_lib.build_model_fn(hps, input_md),
         model_dir=output_dir,
         config=tf.estimator.RunConfig(
@@ -98,7 +99,7 @@ def build_experiment_fn(hps, input_md):
     eval_input_fn = inputs_lib.build_input_fn(hps, input_md, data_dir, 'test')
 
     experiment_partial = functools.partial(
-        tf.contrib.learn.Experiment,
+        contrib_learn.Experiment,
         eval_steps=FLAGS.evals_per_ckpt,
     )
 
