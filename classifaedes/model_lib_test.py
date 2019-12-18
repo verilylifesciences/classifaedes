@@ -21,7 +21,7 @@ from __future__ import print_function
 from absl.testing import parameterized
 from classifaedes import hparams_lib
 from classifaedes import model_lib
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from tensorflow.contrib import learn as contrib_learn
 
 

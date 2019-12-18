@@ -19,7 +19,7 @@ from __future__ import print_function
 
 
 from classifaedes import hparams_lib
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 
 class HparamsLibTest(tf.test.TestCase):

@@ -23,7 +23,7 @@ import json
 import logging
 import os.path
 
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 gfile = tf.gfile
 
 # Constants for fields contained in the metadata for the dataset.

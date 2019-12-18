@@ -23,7 +23,7 @@ import io
 import numpy as np
 from PIL import Image as pil_image
 
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 gfile = tf.gfile
 
 
