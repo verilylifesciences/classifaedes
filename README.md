@@ -6,6 +6,8 @@
 
 This code is used by the [Debug](https://www.debug.com) project in order to classify male and female Aedes Aegypti mosquitoes for release in an IIT program. Images of the mosquitoes are taken in mechancial sorters and then classified on the likelihood of the image being of a male and thus can be accepted for release.
 
+Note that while the code is released under the Apache license, the related data and pretrained models can only be used for academic/experimental purposes without prior consent. For more details, please see the LICENSE_DATA file.
+
 ## Data Preparation
 Training and eval data is stored in TFRecord's of `tf.Example` messages in two
 directories (train and test). Each `tf.Example` must have the following items:
