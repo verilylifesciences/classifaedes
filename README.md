@@ -8,6 +8,8 @@ This code is used by the [Debug](https://www.debug.com) project in order to clas
 
 Note that while the code is released under the Apache license, the related data and pretrained models can only be used for academic/experimental purposes without prior consent. For more details, please see the LICENSE_DATA file.
 
+In order to request access to the data and/or pretrained models, please fill out the following [form](https://docs.google.com/forms/d/e/1FAIpQLSeysKGV38WTKLyAz-UR51qWEkvkHc6NIU5rjoh0zKLrMzQaNQ/viewform).
+
 ## Data Preparation
 Training and eval data is stored in TFRecord's of `tf.Example` messages in two
 directories (train and test). Each `tf.Example` must have the following items:
