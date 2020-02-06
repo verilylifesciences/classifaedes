@@ -22,7 +22,7 @@ import os.path
 import time
 
 
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from tensorflow.contrib import training as contrib_training
 
 flags = tf.app.flags

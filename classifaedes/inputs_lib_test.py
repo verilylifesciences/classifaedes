@@ -24,7 +24,7 @@ from classifaedes import hparams_lib
 from classifaedes import inputs_lib
 from classifaedes import metadata
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 flags = tf.app.flags
 FLAGS = flags.FLAGS

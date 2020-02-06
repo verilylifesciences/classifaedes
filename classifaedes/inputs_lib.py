@@ -23,7 +23,7 @@ import random
 
 
 from classifaedes import metadata
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from tensorflow.contrib import slim
 
 flags = tf.app.flags

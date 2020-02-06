@@ -23,7 +23,7 @@ import os.path
 
 from classifaedes import simple_image_lib as sil
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 flags = tf.app.flags
 FLAGS = flags.FLAGS

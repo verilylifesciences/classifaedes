@@ -24,7 +24,7 @@ from classifaedes import metadata
 from classifaedes import model_lib
 import classifaedes.simple_image_lib as sil
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from tensorflow.contrib import learn as contrib_learn
 
 flags = tf.app.flags
