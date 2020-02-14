@@ -38,7 +38,7 @@ py_test(
     python_version = "PY3",
     deps = [
         ":simple_image_lib",
-        "//learning/brain/public:disable_tf2",  # build_cleaner: keep; go/disable_tf2
+        # This is a placeholder for disabling TF2 behaviour
         requirement("numpy"),
     ],
 )
@@ -58,7 +58,7 @@ py_binary(
     python_version = "PY3",
     deps = [
         ":learner_main_lib",
-        "//learning/brain/public:disable_tf2",  # build_cleaner: keep; go/disable_tf2
+        # This is a placeholder for disabling TF2 behaviour
     ],
 )
 
@@ -96,7 +96,7 @@ py_test(
     deps = [
         ":export_lib",
         ":learner_main_lib",
-        "//learning/brain/public:disable_tf2",  # build_cleaner: keep; go/disable_tf2
+        # This is a placeholder for disabling TF2 behaviour
         requirement("absl-py"), # flagsaver
         requirement("tensorflow"),
     ],
@@ -108,7 +108,7 @@ py_test(
     python_version = "PY3",
     deps = [
         ":learner_main_lib",
-        "//learning/brain/public:disable_tf2",  # build_cleaner: keep; go/disable_tf2
+        # This is a placeholder for disabling TF2 behaviour
         requirement("tensorflow"),
     ],
 )
@@ -123,7 +123,7 @@ py_test(
     python_version = "PY3",
     deps = [
         ":learner_main_lib",
-        "//learning/brain/public:disable_tf2",  # build_cleaner: keep; go/disable_tf2
+        # This is a placeholder for disabling TF2 behaviour
         requirement("numpy"),
         requirement("tensorflow"),
     ],
@@ -136,7 +136,7 @@ py_test(
     python_version = "PY3",
     deps = [
         ":learner_main_lib",
-        "//learning/brain/public:disable_tf2",  # build_cleaner: keep; go/disable_tf2
+        # This is a placeholder for disabling TF2 behaviour
         requirement("absl-py"), # parameterized
         requirement("tensorflow"),
         # contrib/learn
@@ -149,7 +149,7 @@ py_binary(
     python_version = "PY3",
     deps = [
         ":export_lib",
-        "//learning/brain/public:disable_tf2",  # build_cleaner: keep; go/disable_tf2
+        # This is a placeholder for disabling TF2 behaviour
     ],
 )
 
