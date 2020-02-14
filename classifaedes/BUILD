@@ -38,6 +38,7 @@ py_test(
     python_version = "PY3",
     deps = [
         ":simple_image_lib",
+        "//learning/brain/public:disable_tf2",  # build_cleaner: keep; go/disable_tf2
         requirement("numpy"),
     ],
 )
@@ -55,7 +56,10 @@ py_binary(
     name = "learner",
     srcs = ["learner.py"],
     python_version = "PY3",
-    deps = [":learner_main_lib"],
+    deps = [
+        ":learner_main_lib",
+        "//learning/brain/public:disable_tf2",  # build_cleaner: keep; go/disable_tf2
+    ],
 )
 
 py_library(
@@ -92,6 +96,7 @@ py_test(
     deps = [
         ":export_lib",
         ":learner_main_lib",
+        "//learning/brain/public:disable_tf2",  # build_cleaner: keep; go/disable_tf2
         requirement("absl-py"), # flagsaver
         requirement("tensorflow"),
     ],
@@ -103,6 +108,7 @@ py_test(
     python_version = "PY3",
     deps = [
         ":learner_main_lib",
+        "//learning/brain/public:disable_tf2",  # build_cleaner: keep; go/disable_tf2
         requirement("tensorflow"),
     ],
 )
@@ -117,6 +123,7 @@ py_test(
     python_version = "PY3",
     deps = [
         ":learner_main_lib",
+        "//learning/brain/public:disable_tf2",  # build_cleaner: keep; go/disable_tf2
         requirement("numpy"),
         requirement("tensorflow"),
     ],
@@ -129,6 +136,7 @@ py_test(
     python_version = "PY3",
     deps = [
         ":learner_main_lib",
+        "//learning/brain/public:disable_tf2",  # build_cleaner: keep; go/disable_tf2
         requirement("absl-py"), # parameterized
         requirement("tensorflow"),
         # contrib/learn
@@ -139,7 +147,10 @@ py_binary(
     name = "export",
     srcs = ["export.py"],
     python_version = "PY3",
-    deps = [":export_lib"],
+    deps = [
+        ":export_lib",
+        "//learning/brain/public:disable_tf2",  # build_cleaner: keep; go/disable_tf2
+    ],
 )
 
 py_library(
