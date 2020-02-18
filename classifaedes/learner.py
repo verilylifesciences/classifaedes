@@ -27,7 +27,7 @@ from classifaedes import hparams_lib
 from classifaedes import inputs_lib
 from classifaedes import metadata
 from classifaedes import model_lib
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from tensorflow.contrib import learn as contrib_learn
 
 # Schenanegans to import extra tensforflow dependencies that are not

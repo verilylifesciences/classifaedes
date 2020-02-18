@@ -21,7 +21,7 @@ import functools as ft
 
 from classifaedes import metadata
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from tensorflow.contrib import framework as contrib_framework
 from tensorflow.contrib import learn as contrib_learn
 from tensorflow.contrib import metrics as contrib_metrics
