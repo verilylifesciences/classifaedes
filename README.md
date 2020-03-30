@@ -1,10 +1,12 @@
 # Debug project male/female mosquito classifier
 
-[TOC]
-
 ## Introduction
 
 This code is used by the [Debug](https://www.debug.com) project in order to classify male and female Aedes Aegypti mosquitoes for release in an IIT program. Images of the mosquitoes are taken in mechancial sorters and then classified on the likelihood of the image being of a male and thus can be accepted for release.
+
+More details are described in our paper:
+
+[Crawford et. al. Efficient production of male Wolbachia-infected Aedes aegypti mosquitoes enables large-scale suppression of wild populations. _Nature Biotechnology_. 2020](https://www.nature.com/articles/s41587-020-0471-x)
 
 Note that while the code is released under the Apache license, the related data and pretrained models can only be used for academic/experimental purposes without prior consent. For more details, please see the LICENSE_DATA file.
 
