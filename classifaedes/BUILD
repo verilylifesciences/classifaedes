@@ -16,7 +16,7 @@
 
 load("@pipdeps//:requirements.bzl", "requirement")
 
-licenses(["notice"])  # Apache License 2.0
+licenses(["notice"])
 
 exports_files(["LICENSE"])
 
