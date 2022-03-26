@@ -74,6 +74,7 @@ py_library(
     deps = [
         ":metadata",
         requirement("tensorflow"),
+        "//third_party/py/tensorflow:tensorflow_compat_v1_estimator",
         # contrib/framework:framework_py
         # contrib/learn
         # contrib/metrics:metrics_py

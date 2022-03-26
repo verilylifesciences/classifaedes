@@ -28,6 +28,7 @@ from classifaedes import inputs_lib
 from classifaedes import metadata
 from classifaedes import model_lib
 import tensorflow.compat.v1 as tf
+from tensorflow.compat.v1 import estimator as tf_estimator
 from tensorflow.contrib import learn as contrib_learn
 
 # Schenanegans to import extra tensforflow dependencies that are not
@@ -88,7 +89,7 @@ def build_experiment_fn(hps, input_md):
     estimator = contrib_learn.Estimator(
         model_fn=model_lib.build_model_fn(hps, input_md),
         model_dir=output_dir,
-        config=tf.estimator.RunConfig(
+        config=tf_estimator.RunConfig(
             save_summary_steps=FLAGS.save_summary_steps,
             save_checkpoints_secs=FLAGS.save_checkpoints_secs,
         ),
