@@ -77,7 +77,7 @@ class InputsLibTest(tf.test.TestCase):
 
       self.assertEqual(images.dtype, np.float32)
       self.assertEqual(images.shape, (2, MAX_HEIGHT, MAX_WIDTH, 1))
-      self.assertEqual(labels.dtype, np.bool)
+      self.assertEqual(labels.dtype, bool)
       self.assertEqual(labels.shape, (2,))
 
       coord.request_stop()
