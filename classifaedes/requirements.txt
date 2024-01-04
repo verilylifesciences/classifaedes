@@ -1,5 +1,5 @@
 tensorflow >=1.14,<2.0
 numpy
-Pillow
+Pillow >= 10.0.1
 absl-py
 enum-compat
